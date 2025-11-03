@@ -1,0 +1,90 @@
+---
+import MenuIcon from "../icons/MenuIcon.astro";
+import CloseIcon from "../icons/CloseIcon.astro";
+
+interface menuItemsP {
+  src: string | URL | null | undefined;
+  name: String;
+}
+
+const menuItems: menuItemsP[] = [
+  { src: "/", name: "Inicio" },
+  { src: "#productos", name: "Productos" },
+  { src: "#ofertas", name: "Ofertas" },
+  { src: "#contactos", name: "Contactos" },
+];
+---
+
+<header class="z-10 fixed w-full bg-black/70">
+  <nav class="py-2 px-4 font-semibold text-lg">
+    <!-- Menu modo escritorio -->
+    <div class="flex justify-between items-center">
+      <img
+        class="w-12 h-12 rounded-2xl"
+        src="https://i.pinimg.com/736x/f7/63/03/f7630358b6c2e058381a34be8d2736d8.jpg"
+        alt="logo"
+      />
+      <div
+        id="btn-open"
+        class="cursor-pointer md:hidden bg-amber-50 p-2 rounded-lg"
+      >
+        <MenuIcon />
+      </div>
+    </div>
+    <!-- Fin menu modo escritorio -->
+    <!-- Menu modo mobile -->
+    <div
+      id="menu"
+      class="absolute inset-0 w-sreen h-screen bg-black/50 hidden md:hidden"
+    >
+      <div class="h-full bg-amber-50 w-2xs fixed p-4 right-0">
+        <!-- icono de cierre del menu -->
+        <div id="btn-close" class="flex justify-end cursor-pointer">
+          <CloseIcon />
+        </div>
+        <!-- fin icono de cierre del menu -->
+        <!-- lista del menu mobile -->
+        <ul class="pt-10">
+          {
+            menuItems.map((item) => (
+              <li id="item-menu" class="p-3 text-gray-600 ">
+                <a class="hover:text-green-500" href={item.src}>
+                  {item.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <!-- fin lista del menu mobile -->
+      </div>
+    </div>
+    <!-- fin menu modo mobile -->
+  </nav>
+</header>
+
+<script>
+  const menuMobile = document.getElementById("menu");
+
+  //Código para cerrar el menú mobile
+  const btnClose = document.getElementById("btn-close");
+  btnClose?.addEventListener("click", () => {
+    // Cierra el menú
+    menuMobile?.classList.add("hidden");
+  });
+
+  // Código para abrir el menú mobile
+  const btnOpen = document.getElementById("btn-open");
+  btnOpen?.addEventListener("click", () => {
+    //Abre el menu
+    menuMobile?.classList.remove("hidden");
+  });
+
+  //Redirigir y cerrar el menú al hacer clic en un elemento del menú
+  const menuItemsList = document.querySelectorAll("#item-menu");
+  menuItemsList.forEach((item) => {
+    item.addEventListener("click", () => {
+      // Cierra el menú al hacer clic en un elemento
+      menuMobile?.classList.add("hidden");
+    });
+  });
+</script>

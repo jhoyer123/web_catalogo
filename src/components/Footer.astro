@@ -1,0 +1,38 @@
+---
+const year = new Date().getFullYear();
+
+interface menuItemsP {
+  src: string | URL | null | undefined;
+  name: String;
+}
+
+const menuItems: menuItemsP[] = [
+  { src: "/", name: "Inicio" },
+  { src: "#productos", name: "Productos" },
+  { src: "#ofertas", name: "Ofertas" },
+  { src: "#contactos", name: "Contactos" },
+  { src: "#redes", name: "Redes Sociales" },
+];
+---
+
+<footer class="text-white bg-gray-700 pb-10 pt-2 text-lg text-center">
+  <div class="h-52">
+    <nav class="mt-4">
+      <ul class="flex justify-center items-center space-x-4 flex-col list-none">
+        {
+          menuItems.map((item) => (
+            <li class="py-1 border-b border-gray-400 m-0 w-32">
+              <a class="decoration-none" href={item.src}>
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <h3 class="p-2 mt-2 bg-gray-800 text-sm">
+      © {year} Mi Empresa Todos los derechos reservados.
+    </h3>
+  </div>
+</footer>
