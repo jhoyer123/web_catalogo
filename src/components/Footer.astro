@@ -15,14 +15,14 @@ const menuItems: menuItemsP[] = [
 ];
 ---
 
-<footer class="text-white bg-gray-700 pb-10 pt-2 text-lg text-center">
+<footer class="text-red-100 bg-gray-700 pb-4 pt-1 text-center">
   <div class="h-52">
-    <nav class="mt-4">
-      <ul class="flex justify-center items-center space-x-4 flex-col list-none">
+    <nav class="mt-1">
+      <ul class="flex justify-center items-center flex-col list-none pb-1">
         {
           menuItems.map((item) => (
-            <li class="py-1 border-b border-gray-400 m-0 w-32">
-              <a class="decoration-none" href={item.src}>
+            <li class="py-1 border-b border-gray-400 m-0 w-32 hover:bg-gray-600">
+              <a class="decoration-none hover:text-red-300" href={item.src}>
                 {item.name}
               </a>
             </li>
@@ -31,7 +31,7 @@ const menuItems: menuItemsP[] = [
       </ul>
     </nav>
 
-    <h3 class="p-2 mt-2 bg-gray-800 text-sm">
+    <h3 class="p-4 mt-2 bg-gray-800 text-sm text-white">
       © {year} Mi Empresa Todos los derechos reservados.
     </h3>
   </div>

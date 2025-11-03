@@ -15,13 +15,13 @@ const menuItems: menuItemsP[] = [
 ];
 ---
 
-<header class="z-10 fixed w-full bg-black/70">
-  <nav class="py-2 px-4 font-semibold text-lg">
+<header id="header" class="z-10 fixed w-full bg-black/20">
+  <nav class="px-4 font-semibold text-lg">
     <!-- Menu modo escritorio -->
     <div class="flex justify-between items-center">
       <img
         class="w-12 h-12 rounded-2xl"
-        src="https://i.pinimg.com/736x/f7/63/03/f7630358b6c2e058381a34be8d2736d8.jpg"
+        src="https://i.pinimg.com/1200x/c7/85/68/c78568c446d383a7977dd19288b6c389.jpg"
         alt="logo"
       />
       <div
@@ -64,7 +64,7 @@ const menuItems: menuItemsP[] = [
 
 <script>
   const menuMobile = document.getElementById("menu");
-
+  const navHeader = document.getElementById("header");
   //Código para cerrar el menú mobile
   const btnClose = document.getElementById("btn-close");
   btnClose?.addEventListener("click", () => {
@@ -80,7 +80,8 @@ const menuItems: menuItemsP[] = [
   });
 
   //Redirigir y cerrar el menú al hacer clic en un elemento del menú
-  const menuItemsList = document.querySelectorAll("#item-menu");
+  const menuItemsList = document.querySelectorAll("li");
+  console.log(menuItemsList);
   menuItemsList.forEach((item) => {
     item.addEventListener("click", () => {
       // Cierra el menú al hacer clic en un elemento
